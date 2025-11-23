@@ -1,1 +1,93 @@
+# ------------------------------
+# Banking Application 
+# ------------------------------
+
+def verify_pin(correct_pin):
+    """Verify user PIN."""
+    user_pin = int(input("Enter your PIN: "))
+    return user_pin == correct_pin
+
+
+def show_menu():
+    """Display banking menu."""
+    print("""
+=======================================
+        AADI & PYTHON BANK
+=======================================
+1. Deposit Money
+2. Withdraw Money
+3. Check Balance
+4. Exit
+=======================================
+""")
+    
+
+def deposit_amount(balance):
+    """Handle deposit operation."""
+    amount = float(input("Enter amount to deposit: "))
+
+    if amount > 0:
+        balance += amount
+        print(f"₹{amount} deposited successfully! New Balance = ₹{balance}")
+    else:
+        print("Invalid deposit amount!")
+
+    return balance
+
+
+def withdraw_amount(balance):
+    """Handle withdraw operation."""
+    amount = float(input("Enter amount to withdraw: "))
+
+    if amount <= 0:
+        print("Invalid withdrawal amount!")
+        return balance
+
+    if amount > balance:
+        print("Insufficient balance!")
+    else:
+        balance -= amount
+        print(f"₹{amount} withdrawn successfully! New Balance = ₹{balance}")
+
+    return balance
+
+
+def banking_app():
+    """Main application controller."""
+    PIN = 1212
+    balance = 5000
+
+    print("\n------- Welcome to AADI & PYTHON BANK -------\n")
+
+    if not verify_pin(PIN):
+        print("❌ Invalid PIN. Access Denied.")
+        return
+
+    print("✔ PIN Verified Successfully!\n")
+
+    while True:
+        show_menu()
+        choice = int(input("Enter your choice: "))
+
+        if choice == 1:
+            balance = deposit_amount(balance)
+
+        elif choice == 2:
+            balance = withdraw_amount(balance)
+
+        elif choice == 3:
+            print(f"Your Current Balance: ₹{balance}")
+
+        elif choice == 4:
+            print("Thank you for banking with us. Have a great day!")
+            break
+
+        else:
+            print("Invalid choice! Please select from the menu.")
+
+
+# ------------------------------
+# Run the Application
+# ------------------------------
+banking_app()
 
