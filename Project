@@ -12,7 +12,7 @@ def show_menu():
     """Display banking menu."""
     print("""
 =======================================
-        AADI & PYTHON BANK
+        BANK APPLICATION
 =======================================
 1. Deposit Money
 2. Withdraw Money
